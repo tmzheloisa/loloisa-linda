@@ -1,10 +1,18 @@
 body{
     background-color: rgb(255, 255, 255);
+    text-aling: center;
 }
 h1{
     color: rgb(96, 11, 25);
     fonte-style: italic;
+    fonte-weight: 300;
 }
+
+h1 { 
+
+
+
+
 .damon {
     width:50;
 }
