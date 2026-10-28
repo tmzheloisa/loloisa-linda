@@ -8,11 +8,19 @@ h1{
     fonte-weight: 300;
 }
 
-h1 { 
+h2 {
+color: black;
+font-style: normal;
 
+}
 
 
 
 .damon {
     width:50;
+height: auto;
+display: block;
+margin: o auto;
 }
+
+
