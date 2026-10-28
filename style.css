@@ -661,4 +661,111 @@ footer a {
 }
 
 
+/* AJUSTES DE COR, TAMANHO E VISUALIZAÇÃO EM COMPUTADORES */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 20px;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* Evita títulos escuros e difíceis de enxergar */
+h1, h2, h3, h4, h5, h6,
+h7, h8, h9, h10 {
+  color: #e0a1b2;
+}
+
+/* Imagens proporcionais e sem estourar o layout */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Cartões com tamanho consistente */
+.cards-container {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.flip-card {
+  width: 100%;
+  min-height: 270px;
+  height: 270px;
+}
+
+.flip-card-front,
+.flip-card-back {
+  color: #f5eaf0;
+  overflow-wrap: break-word;
+}
+
+.flip-card-front h3,
+.flip-card-back h3 {
+  color: #f3c7d3;
+  margin: 0 0 12px;
+}
+
+.flip-card-front p,
+.flip-card-back p {
+  color: #f5eaf0;
+  margin: 0;
+}
+
+/* Imagens dos personagens */
+.personagens-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.personagem img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Impede imagens quebradas de ficarem enormes */
+img:not([src]),
+img[src=""] {
+  display: none;
+}
+
+/* Ajustes para telas menores, sem priorizar o celular */
+@media (max-width: 760px) {
+  .cards-container,
+  .personagens-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flip-card {
+    height: 240px;
+    min-height: 240px;
+  }
+
+  .personagem img {
+    height: 320px;
+  }
+}
+
+/* Telas grandes: aproveita melhor o espaço disponível */
+@media (min-width: 1200px) {
+  body {
+    font-size: 21px;
+  }
+
+  .cards-container,
+  .personagens-grid {
+    gap: 28px;
+  }
+
+  .personagem img {
+    height: 390px;
+  }
+}
+
 
