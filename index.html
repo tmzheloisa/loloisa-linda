@@ -93,5 +93,969 @@ próprias características para os personagens. Apesar de não existirem evidên
 em diversas produções.
 </p>
 <img src=images.jpeg>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100d10">
+  <title>Entre Sombras | Universo dos Vampiros</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #100d10;
+      --panel: #1b1419;
+      --wine: #672b3b;
+      --wine2: #a35c6b;
+      --text: #eee7e7;
+      --muted: #c0b0b4;
+      --line: #4a333b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 18px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1, h2, h3, button, .brand, nav {
+      font-family: "Cinzel", Georgia, serif;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      color: #e5c4cb;
+      margin: .2em 0 .5em;
+    }
+
+    h3 {
+      color: #dfb7c0;
+    }
+
+    p {
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 15px 5%;
+      background: rgba(16, 13, 16, .97);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      text-decoration: none;
+      letter-spacing: .14em;
+      font-size: 14px;
+      color: #e8cbd1;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: .07em;
+    }
+
+    nav a:hover {
+      color: #d68b9a;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: white;
+      padding: 8px 12px;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(7,5,7,.92), rgba(7,5,7,.28)),
+        url("imagens/castelo-moradia.jpeg") center 40% / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, var(--bg), transparent 25%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 80px 8%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow, .tag {
+      color: #c78b97;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font: 12px "Cinzel", serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.03;
+      margin: .25em 0;
+      color: #f5e9eb;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 1.3rem;
+    }
+
+    .btn, .action {
+      display: inline-block;
+      background: #51212e;
+      color: white;
+      border: 1px solid #9d5b69;
+      padding: 13px 20px;
+      text-decoration: none;
+      font: 12px "Cinzel", serif;
+      letter-spacing: .1em;
+    }
+
+    .btn:hover, .action:hover {
+      background: #713344;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 78px 6%;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+    }
+
+    .editorial {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+    .caption {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 23px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery figcaption {
+      padding: 14px;
+    }
+
+    .wide-img {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      margin-top: 24px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .flip {
+      min-height: 270px;
+      perspective: 1000px;
+      background: none;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      text-align: center;
+      width: 100%;
+    }
+
+    .flip-inner {
+      display: block;
+      position: relative;
+      min-height: 270px;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .6s;
+    }
+
+    .flip.on .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      min-height: 270px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      border: 1px solid #704551;
+      background: linear-gradient(145deg, #281820, #130f12);
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, #3b1c28, #130f12);
+    }
+
+    .icon {
+      font-size: 2.2rem;
+      color: #d49aa5;
+    }
+
+    .feature {
+      background: #191116;
+      border-block: 1px solid var(--line);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .character {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .portrait {
+      height: 310px;
+      background: #251b20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e6c5cc;
+      text-align: center;
+      font: 16px "Cinzel", serif;
+      overflow: hidden;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .character-info {
+      padding: 18px;
+    }
+
+    .character-info h3 {
+      margin-top: 0;
+    }
+
+    .notice, .result {
+      padding: 20px;
+      border-left: 3px solid var(--wine2);
+      background: #20151a;
+      margin-top: 22px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .choice, .weakness, .quiz button {
+      background: #24171d;
+      color: var(--text);
+      border: 1px solid #80505b;
+      padding: 14px;
+      font: 13px "Cinzel", serif;
+    }
+
+    .choice:hover, .weakness:hover, .quiz button:hover {
+      background: #51212e;
+    }
+
+    .quiz {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 24px;
+    }
+
+    .quiz fieldset {
+      border: 0;
+      border-top: 1px solid var(--line);
+      padding: 15px 0;
+    }
+
+    .quiz legend {
+      color: #e5c4cb;
+      padding: 10px 0;
+    }
+
+    .quiz label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .quiz input {
+      accent-color: #a35c6b;
+    }
+
+    .footer {
+      text-align: center;
+      border-top: 1px solid var(--line);
+      padding: 30px;
+      color: var(--muted);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        flex-wrap: wrap;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .section {
+        padding: 55px 6%;
+      }
+
+      .columns, .split {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery, .cards, .character-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery img {
+        height: 280px;
+      }
+
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio">✦ ENTRE SOMBRAS</a>
+
+    <button class="menu-btn" id="menu-btn" type="button"
+      aria-expanded="false" aria-controls="nav">☰</button>
+
+    <nav id="nav" aria-label="Menu principal">
+      <a href="#origem">ORIGEM</a>
+      <a href="#lugares">LUGARES</a>
+      <a href="#presas">PRESAS</a>
+      <a href="#poderes">PODERES</a>
+      <a href="#personagens">PERSONAGENS</a>
+      <a href="#fraquezas">FRAQUEZAS</a>
+      <a href="#quiz">QUIZ</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <p class="eyebrow">Um mundo entre a vida e a eternidade</p>
+      <h1>O lado sombrio da imortalidade</h1>
+      <p>Entre castelos cobertos pela neblina, florestas silenciosas e histórias que atravessam séculos, descubra por que os vampiros continuam despertando tanta curiosidade.</p>
+      <a class="btn" href="#origem">ENTRAR NESSE UNIVERSO</a>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="origem">
+      <p class="tag">01 · DE ONDE VIERAM?</p>
+      <h2>A origem dos vampiros</h2>
+
+      <p class="lead">A figura do vampiro surgiu de crenças antigas sobre a morte, o desconhecido e seres que voltariam para perturbar os vivos.</p>
+
+      <p>Em diferentes épocas, relatos de doenças, corpos em decomposição e costumes funerários ajudaram a alimentar essas histórias. Não existe uma única origem para todas as lendas: cada povo criou suas próprias versões e maneiras de explicar essas criaturas.</p>
+
+      <img class="editorial" src="imagens/cemiterio.jpeg"
+        alt="Cemitério antigo sob a luz da lua, com cruzes e neblina" loading="lazy">
+
+      <p class="caption">Entre a história e a superstição, o medo ganhou muitas formas.</p>
+
+      <div class="columns">
+        <article class="panel">
+          <h3>Lendas ao redor do mundo</h3>
+          <p>Histórias sobre seres que se alimentam do sangue ou da energia dos vivos aparecem em diversas culturas. Nem todos são iguais ao vampiro moderno: alguns são espíritos, monstros ou símbolos de medos coletivos.</p>
+        </article>
+
+        <article class="panel">
+          <h3>Da lenda à cultura pop</h3>
+          <p>Livros, filmes e séries transformaram o vampiro em uma figura complexa: perigosa, sedutora, solitária e, às vezes, capaz de amar. Cada obra cria suas próprias regras.</p>
+        </article>
+      </div>
+
+      <div class="notice">
+        <h3>Você sabia?</h3>
+        <p>A literatura gótica e o cinema ajudaram a popularizar a imagem do vampiro elegante, imortal e noturno que conhecemos hoje.</p>
+      </div>
+    </section>
+
+    <section class="section" id="lugares">
+      <p class="tag">02 · ONDE AS LENDAS VIVEM</p>
+      <h2>Lugares que escondem segredos</h2>
+      <p>Castelos isolados, cemitérios antigos e florestas cobertas por neblina formam o cenário perfeito para histórias sobrenaturais.</p>
+
+      <div class="gallery">
+        <figure>
+          <img src="imagens/portao-castelo.jpeg"
+            alt="Portão de ferro ornamentado diante de um castelo" loading="lazy">
+          <figcaption><strong>O portão proibido</strong><br>Uma entrada para um mundo escondido.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="imagens/floresta.jpeg"
+            alt="Floresta escura com neblina" loading="lazy">
+          <figcaption><strong>A floresta silenciosa</strong><br>Onde cada sombra parece se mover.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="imagens/noite-vampiros.jpeg"
+            alt="Mesa gótica com velas e taças vermelhas" loading="lazy">
+          <figcaption><strong>A noite dos vampiros</strong><br>Elegância, mistério e perigo.</figcaption>
+        </figure>
+      </div>
+
+      <img class="wide-img" src="imagens/castelo-moradia.jpeg"
+        alt="Castelo sombrio cercado por neblina" loading="lazy">
+
+      <p class="caption">Moradas isoladas combinam com o imaginário de criaturas que atravessam os séculos.</p>
+    </section>
+
+    <section class="section" id="presas">
+      <p class="tag">03 · A MARCA MAIS CONHECIDA</p>
+      <h2>As presas dos vampiros</h2>
+
+      <div class="split">
+        <div>
+          <p>As presas são um dos símbolos mais reconhecidos dos vampiros. Elas representam o perigo por trás de uma aparência que muitas vezes parece humana.</p>
+
+          <p>Em filmes e séries, o tamanho e a forma das presas mudam conforme as regras daquele universo. Algumas histórias mostram as presas apenas na hora do ataque.</p>
+
+          <button class="action" id="btn-presas" type="button" aria-expanded="false">REVELAR CURIOSIDADE</button>
+
+          <div class="result" id="presas-info" hidden>
+            Na ficção, as presas ajudam a identificar o vampiro imediatamente. Na vida real, não há evidência de vampiros sobrenaturais como os retratados nas histórias.
+          </div>
+        </div>
+
+        <img class="editorial" src="imagens/noite-vampiros.jpeg"
+          alt="Ambiente gótico à luz de velas">
+      </div>
+    </section>
+
+    <section class="section" id="poderes">
+      <p class="tag">04 · HABILIDADES SOBRENATURAIS</p>
+      <h2>Poderes e características</h2>
+      <p>Clique nas cartas para descobrir.</p>
+
+      <div class="cards">
+        <button class="flip" type="button" aria-expanded="false">
+          <span class="flip-inner">
+            <span class="flip-front">
+              <span class="icon">☾</span>
+              <h3>Imortalidade</h3>
+              <p>Toque para descobrir</p>
+            </span>
+            <span class="flip-back">
+              <h3>Vida eterna</h3>
+              <p>Em muitas histórias, os vampiros não envelhecem como os humanos e podem viver por séculos, mas isso não significa que sejam invencíveis.</p>
+            </span>
+          </span>
+        </button>
+
+        <button class="flip" type="button" aria-expanded="false">
+          <span class="flip-inner">
+            <span class="flip-front">
+              <span class="icon">♜</span>
+              <h3>Força e velocidade</h3>
+              <p>Toque para descobrir</p>
+            </span>
+            <span class="flip-back">
+              <h3>Além dos limites humanos</h3>
+              <p>Várias versões de vampiros têm força, reflexos e velocidade muito superiores aos de uma pessoa comum.</p>
+            </span>
+          </span>
+        </button>
+
+        <button class="flip" type="button" aria-expanded="false">
+          <span class="flip-inner">
+            <span class="flip-front">
+              <span class="icon">♧</span>
+              <h3>Hipnose</h3>
+              <p>Toque para descobrir</p>
+            </span>
+            <span class="flip-back">
+              <h3>Controle da mente</h3>
+              <p>Em algumas narrativas, eles conseguem influenciar pensamentos ou apagar lembranças. As regras variam conforme a história.</p>
+            </span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section feature" id="dracula">
+      <p class="tag">05 · O VAMPIRO CLÁSSICO</p>
+
+      <div class="split">
+        <div>
+          <h2>Drácula e o imaginário gótico</h2>
+
+          <p>Publicado em 1897, o romance <em>Drácula</em>, de Bram Stoker, se tornou uma das obras mais influentes da literatura de vampiros.</p>
+
+          <p>O personagem ajudou a consolidar elementos que aparecem até hoje em livros, filmes e séries: o castelo, a noite, o mistério e a ameaça escondida sob uma aparência sofisticada.</p>
+
+          <p>Apesar de o livro ser ficção, sua popularidade fez com que Drácula se tornasse uma referência central quando falamos de vampiros.</p>
+        </div>
+
+        <img class="editorial" src="imagens/portao-castelo.jpeg"
+          alt="Portão de ferro de um castelo gótico envolto em neblina" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section" id="personagens">
+      <p class="tag">06 · THE VAMPIRE DIARIES</p>
+      <h2>Personagens de Mystic Falls</h2>
+
+      <p>Em <em>The Vampire Diaries</em>, vampiros e outras criaturas sobrenaturais convivem com os humanos em uma cidade cheia de segredos. Estas são algumas figuras importantes desse universo.</p>
+
+      <div class="character-grid">
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Damon_Salvatore.jpg"
+              alt="Damon Salvatore" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='DAMON SALVATORE'">
+          </div>
+          <div class="character-info">
+            <h3>Damon Salvatore</h3>
+            <p>Sarcástico e perigoso, esconde sentimentos profundos por trás de uma postura provocadora.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Stefan_Salvatore.jpg"
+              alt="Stefan Salvatore" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='STEFAN SALVATORE'">
+          </div>
+          <div class="character-info">
+            <h3>Stefan Salvatore</h3>
+            <p>Tenta controlar seus impulsos e preservar sua humanidade, mesmo quando o passado retorna.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Katherine_Pierce.jpg"
+              alt="Katherine Pierce" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='KATHERINE PIERCE'">
+          </div>
+          <div class="character-info">
+            <h3>Katherine Pierce</h3>
+            <p>Inteligente e manipuladora, quase sempre tem um plano e raramente revela suas intenções.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Elena_Gilbert.jpg"
+              alt="Elena Gilbert" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='ELENA GILBERT'">
+          </div>
+          <div class="character-info">
+            <h3>Elena Gilbert</h3>
+            <p>Descobre que a cidade onde vive guarda segredos sobrenaturais que mudam sua vida.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Klaus_Mikaelson.jpg"
+              alt="Klaus Mikaelson" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='KLAUS MIKAELSON'">
+          </div>
+          <div class="character-info">
+            <h3>Klaus Mikaelson</h3>
+            <p>Um dos vampiros originais, poderoso e imprevisível, movido pelo controle e pelos laços familiares.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Bonnie_Bennett.jpg"
+              alt="Bonnie Bennett" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='BONNIE BENNETT'">
+          </div>
+          <div class="character-info">
+            <h3>Bonnie Bennett</h3>
+            <p>Uma bruxa essencial para seus amigos, que usa seus poderes para enfrentar ameaças sobrenaturais.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Sybil.jpg"
+              alt="Sybil" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='SYBIL'">
+          </div>
+          <div class="character-info">
+            <h3>Sybil</h3>
+            <p>Uma sereia sobrenatural que manipula mentes e memórias e se torna uma ameaça imprevisível.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Tyler_Lockwood.jpg"
+              alt="Tyler Lockwood" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='TYLER LOCKWOOD'">
+          </div>
+          <div class="character-info">
+            <h3>Tyler Lockwood</h3>
+            <p>Descobre a maldição da família e precisa aprender a lidar com sua natureza de lobisomem.</p>
+          </div>
+        </article>
+
+        <article class="character">
+          <div class="portrait">
+            <img src="https://vampirediaries.fandom.com/wiki/Special:FilePath/Hayley_Marshall.jpg"
+              alt="Hayley Marshall" loading="lazy"
+              onerror="this.remove();this.parentElement.textContent='HAYLEY MARSHALL'">
+          </div>
+          <div class="character-info">
+            <h3>Hayley Marshall</h3>
+            <p>Uma lobisomem determinada, que busca respostas sobre sua origem e protege sua família.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="caption">As fotos dos personagens dependem de links externos. Se algum arquivo mudar, o nome aparecerá no lugar da imagem.</p>
+    </section>
+
+    <section class="section" id="fraquezas">
+      <p class="tag">07 · NEM TUDO É PODER</p>
+      <h2>Fraquezas dos vampiros</h2>
+      <p>Clique em cada item para descobrir como aparece nas lendas e na ficção.</p>
+
+      <div class="buttons">
+        <button class="weakness" data-info="Em muitas histórias, a luz solar queima ou enfraquece vampiros. Outras obras criam formas de protegê-los.">☀ Luz solar</button>
+
+        <button class="weakness" data-info="A madeira aparece em várias lendas como uma forma de ferir ou matar vampiros.">♜ Estaca de madeira</button>
+
+        <button class="weakness" data-info="Alho e símbolos religiosos aparecem em tradições populares, mas não são regras universais.">✦ Alho e símbolos</button>
+
+        <button class="weakness" data-info="Algumas narrativas citam a decapitação ou a destruição do coração como formas de matar um vampiro.">⚔ Ferimentos fatais</button>
+      </div>
+
+      <div class="result" id="weak-result" hidden aria-live="polite"></div>
+    </section>
+
+    <section class="section" id="lado">
+      <p class="tag">08 · ESCOLHA SEU DESTINO</p>
+      <h2>De que lado você ficaria?</h2>
+      <p>Em Mystic Falls, confiar na pessoa errada pode mudar tudo.</p>
+
+      <div class="buttons">
+        <button class="choice" data-info="Você prefere agir nas sombras, confiar nos instintos e guardar seus segredos. Só cuidado para não perder quem você é.">☾ Lado dos vampiros</button>
+
+        <button class="choice" data-info="Você prefere proteger as pessoas e procurar respostas antes de agir. Coragem também é saber em quem confiar.">✧ Lado dos humanos</button>
+      </div>
+
+      <div class="result" id="side-result" hidden aria-live="polite"></div>
+    </section>
+
+    <section class="section" id="arquivo">
+      <p class="tag">09 · ACESSO RESTRITO</p>
+      <h2>Arquivo secreto</h2>
+      <p>Algumas informações não aparecem à primeira vista.</p>
+
+      <button class="action" id="file-btn" type="button" aria-expanded="false">ABRIR ARQUIVO</button>
+
+      <div class="result" id="file-content" hidden>
+        <h3>Relatório confidencial: vampiros</h3>
+        <p><strong>Comportamento:</strong> são retratados como criaturas noturnas capazes de se misturar à sociedade humana.</p>
+        <p><strong>Alimentação:</strong> o sangue é central na maioria das narrativas.</p>
+        <p><strong>Regra principal:</strong> cada lenda, livro ou série estabelece suas próprias características.</p>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <p class="tag">10 · TESTE SUA SOBREVIVÊNCIA</p>
+      <h2>Você sobreviveria a Mystic Falls?</h2>
+      <p>Responda às três perguntas e descubra sua chance de sobreviver a uma noite na cidade.</p>
+
+      <form class="quiz" id="quiz-form">
+        <fieldset>
+          <legend>1. Você ouve um barulho estranho do lado de fora. O que faz?</legend>
+          <label><input type="radio" name="q1" value="1" required> Vai investigar sem contar para ninguém.</label>
+          <label><input type="radio" name="q1" value="2"> Avisa seus amigos e procura um lugar seguro.</label>
+          <label><input type="radio" name="q1" value="0"> Sai correndo na direção do barulho.</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Uma pessoa misteriosa diz que sabe um segredo seu.</legend>
+          <label><input type="radio" name="q2" value="2" required> Mantém a calma e tenta descobrir o que ela quer.</label>
+          <label><input type="radio" name="q2" value="1"> Finge que acredita para conseguir informações.</label>
+          <label><input type="radio" name="q2" value="0"> Confia nela imediatamente.</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Você descobre que seu melhor amigo é um vampiro.</legend>
+          <label><input type="radio" name="q3" value="2" required> Conversa com ele e tenta entender as regras.</label>
+          <label><input type="radio" name="q3" value="1"> Se afasta até saber se está em perigo.</label>
+          <label><input type="radio" name="q3" value="0"> Conta para todo mundo na cidade.</label>
+        </fieldset>
+
+        <button type="submit">DESCOBRIR MEU RESULTADO</button>
+      </form>
+
+      <div class="result" id="quiz-result" hidden aria-live="polite"></div>
+    </section>
+
+    <section class="section" id="final">
+      <p class="tag">ÚLTIMA PÁGINA</p>
+      <h2>As sombras guardam histórias</h2>
+      <p>Os vampiros continuam fascinando porque misturam medo, mistério e a pergunta que acompanha a humanidade há séculos: como seria viver para sempre?</p>
+
+      <button class="action" id="final-btn" type="button" aria-expanded="false">REVELAR A ÚLTIMA MENSAGEM</button>
+
+      <div class="result" id="final-message" hidden>
+        Nem toda criatura da noite é um monstro. E nem todo humano está livre da escuridão.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    ENTRE SOMBRAS · Um mergulho no universo das lendas de vampiros ·
+    <a href="#inicio">Voltar ao início ↑</a>
+  </footer>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const menuButton = document.getElementById("menu-btn");
+
+    menuButton.addEventListener("click", () => {
+      const aberto = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(aberto));
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.querySelectorAll(".flip").forEach(card => {
+      card.addEventListener("click", () => {
+        const virou = card.classList.toggle("on");
+        card.setAttribute("aria-expanded", String(virou));
+      });
+    });
+
+    function configurarRevelacao(botaoId, conteudoId, textoAbrir, textoFechar) {
+      const botao = document.getElementById(botaoId);
+      const conteudo = document.getElementById(conteudoId);
+
+      botao.addEventListener("click", () => {
+        conteudo.hidden = !conteudo.hidden;
+
+        const aberto = !conteudo.hidden;
+        botao.setAttribute("aria-expanded", String(aberto));
+        botao.textContent = aberto ? textoFechar : textoAbrir;
+      });
+    }
+
+    configurarRevelacao(
+      "btn-presas",
+      "presas-info",
+      "REVELAR CURIOSIDADE",
+      "ESCONDER CURIOSIDADE"
+    );
+
+    configurarRevelacao(
+      "file-btn",
+      "file-content",
+      "ABRIR ARQUIVO",
+      "FECHAR ARQUIVO"
+    );
+
+    configurarRevelacao(
+      "final-btn",
+      "final-message",
+      "REVELAR A ÚLTIMA MENSAGEM",
+      "ESCONDER MENSAGEM"
+    );
+
+    document.querySelectorAll(".weakness").forEach(botao => {
+      botao.addEventListener("click", () => {
+        const resultado = document.getElementById("weak-result");
+        resultado.textContent = botao.dataset.info;
+        resultado.hidden = false;
+      });
+    });
+
+    document.querySelectorAll(".choice").forEach(botao => {
+      botao.addEventListener("click", () => {
+        const resultado = document.getElementById("side-result");
+        resultado.textContent = botao.dataset.info;
+        resultado.hidden = false;
+      });
+    });
+
+    document.getElementById("quiz-form").addEventListener("submit", evento => {
+      evento.preventDefault();
+
+      const respostas = new FormData(evento.currentTarget);
+      const pontos =
+        Number(respostas.get("q1")) +
+        Number(respostas.get("q2")) +
+        Number(respostas.get("q3"));
+
+      const resultado = document.getElementById("quiz-result");
+
+      if (pontos >= 5) {
+        resultado.textContent =
+          "Você tem boas chances de sobreviver! Você pensa antes de agir e sabe que confiança precisa ser conquistada.";
+      } else if (pontos >= 3) {
+        resultado.textContent =
+          "Você talvez sobreviva, mas vai precisar de um plano melhor. Em Mystic Falls, curiosidade sem cuidado pode ser perigosa.";
+      } else {
+        resultado.textContent =
+          "Sua sobrevivência está em risco! Melhor aprender algumas regras antes do anoitecer.";
+      }
+
+      resultado.hidden = false;
+      resultado.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    });
+  </script>
 </body>
 </html>
