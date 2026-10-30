@@ -221,3 +221,14 @@ img {
         transition: none !important;
     }
 }
+/* ===== AJUSTE EXCLUSIVO DA SEÇÃO 11 ===== */
+
+.section#misterio {
+    width: 100%;
+    max-width: 1100px;
+    margin: 48px auto;
+    padding: clamp(28px, 5vw, 48px);
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
